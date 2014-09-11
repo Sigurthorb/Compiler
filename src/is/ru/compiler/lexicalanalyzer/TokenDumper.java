@@ -16,7 +16,7 @@ public class TokenDumper {
 
             System.out.print(t.getTokenCode().toString());
             if(t.getSymbolTableEntry() != null || t.getTokenCode() == TokenCode.RELOP ||t.getTokenCode() == TokenCode.ADDOP ||t.getTokenCode() == TokenCode.MULOP){
-                if(t.getSymbolTableEntry() == null) {
+                if(t.getSymbolTableEntry() != null) {
                     System.out.print("(" + t.getSymbolTableEntry().getLexeme() + ") ");
                     symbolTable.addEntry(t.getSymbolTableEntry());
                 }
@@ -32,6 +32,7 @@ public class TokenDumper {
                 break;
         }
         int counter = 0;
+        System.out.println();
         System.out.println();
         for(SymbolTableEntry temp : symbolTable.getEntryList()){
             System.out.println(counter + "  " + temp.getLexeme());
