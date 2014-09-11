@@ -30,14 +30,14 @@ incdecop = "++" | "--"
 relop = "==" | "!=" | "<" | ">" | "<=" | ">="  // more or less
 addop = "+" | "-" | "||"
 mulop = "*" | "/" | "%" | "&&" 
-comment = ("/*" {id}+ "*/")
+comment = "/*" (.*) "*/"
 brace = "{" | "}"
 comma = ","
 assign = "="
 semicol = ";"
 paren = "(" | ")"
 //WS = " " | "\n" | "\t" | "\r"
-WS = [ \n\t]+
+WS = " "+ | \R+
 
 %%
 
