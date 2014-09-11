@@ -31,6 +31,7 @@ relop = "==" | "!=" | "<" | ">" | "<=" | ">="  // more or less
 addop = "+" | "-" | "||"
 mulop = "*" | "/" | "%" | "&&"
 brace = "{" | "}"
+bracket = "[" | "]"
 comma = ","
 assign = "="
 semicol = ";"
@@ -158,6 +159,21 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
         tokenCode = TokenCode.LBRACE;
     }else if(op.equals("}")){
         tokenCode = TokenCode.RBRACE;
+    }
+
+    Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
+
+    return token;
+}
+
+{bracket} {
+    String op = yytext();
+    TokenCode tokenCode = null;
+
+    if(op.equals("[")){
+        tokenCode = TokenCode.LBRACKET;
+    }else if(op.equals("]")){
+        tokenCode = TokenCode.RBRACKET;
     }
 
     Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
