@@ -21,7 +21,6 @@ public class TokenDumper {
             }else{
                 System.out.print(" ");
             }
-            // TODO: Print out relevant  data for token in paranthesis
 
             if(t.getSymbolTableEntry() != null){
                 symbolTable.addEntry(t.getSymbolTableEntry());
@@ -33,9 +32,8 @@ public class TokenDumper {
         int counter = 0;
         for(SymbolTableEntry temp : symbolTable.getEntryList()){
             System.out.println(counter + "  " + temp.getLexeme());
+            counter++;
         }
 
-
-        // TODO: Print out symbol table
     }
 }
