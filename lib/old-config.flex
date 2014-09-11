@@ -31,6 +31,15 @@ relop = "==" | "!=" | "<" | ">" | "<=" | ">="  // more or less
 addop = "+" | "-" | "||"
 mulop = "*" | "/" | "%" | "&&" 
 comment = "/*" (.*) "*/"
+brace = "{" | "}"
+comma = ","
+int = "int"
+real = "real"
+assign = "="
+semicol = ";"
+void = "void"
+if = "if"
+else = "else"
 
 WS = [ \n\t\r]+
 
@@ -40,20 +49,20 @@ WS = [ \n\t\r]+
 
 {comment} { /* Ignore multiline comments */ }
 
-{id} {		System.out.println("id: '" + yytext() + "'"); 
+{id} {
 		Token token = new Token(TokenCode.IDENTIFIER,  OpType.NONE, DataType.NONE, new SymbolTableEntry(yytext()));
 		return token; }
 
-{num} { 	System.out.println("num: ’" + yytext() + "’"); 
+{num} {
 		Token token = new Token(TokenCode.NUMBER, OpType.NONE, DataType.NONE, new SymbolTableEntry(yytext()));
 		return token; }
 
-{incdecop} {	System.out.println("incdecop: ’" + yytext() + "’"); 
+{incdecop} {
 		OpType op = (yytext() == "++" ? OpType.INC : OpType.DEC);
 		Token token = new Token(TokenCode.INCDECOP, op, DataType.NONE, null);
 		return token; }
 
-{relop} {	System.out.println("relop: ’" + yytext() + "’"); 
+{relop} {
 		String op = yytext();
 		OpType opType = OpType.NONE;
                 if (op.equals("==")) {
@@ -77,7 +86,7 @@ WS = [ \n\t\r]+
 		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
 		return token; }
 
-{addop} {	System.out.println("addop: ’" + yytext() + "’"); 
+{addop} {
 		String op = yytext();
 		OpType opType = OpType.NONE;
 		if (op.equals("+")) {
@@ -90,7 +99,7 @@ WS = [ \n\t\r]+
 		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
 		return token; }
 
-{mulop} {	System.out.println("mulop: ’" + yytext() + "’"); 
+{mulop} {
 		String op = yytext();
 		OpType opType = OpType.NONE;
                 if (op.equals("*")) {
@@ -103,7 +112,85 @@ WS = [ \n\t\r]+
 		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
 		return token; }
 
-[^\ ]+ { 	System.out.println("Unknown sequence: ’" + yytext() + "’"); 
+{brace} {
+
+            String op = yytext();
+            TokenCode tokenCode = TokenCode.NONE;
+
+
+            if(op.equals("{")){
+                tokenCode = TokenCode.LBRACE;
+            }else if(op.equals("}")){
+                tokenCode = TokenCode.RBRACE;
+            }
+
+            Token token = new Token(tokenCode);
+
+            return token;
+        }
+
+{comma} {
+
+            return token;
+        }
+
+{int} {
+
+            return token;
+      }
+
+{real} {
+
+            return token;
+       }
+
+{assign} {
+
+            return token;
+         }
+
+{semicol} {
+
+            return token;
+          }
+
+{void} {
+
+            return token;
+        }
+
+{if} {
+
+            return token;
+     }
+
+{else} {
+
+            return token;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[^\ ]+ {
 		Token token = new Token(TokenCode.ERR_ILL_CHAR, OpType.NONE, DataType.NONE, null);
 		return token; }
 

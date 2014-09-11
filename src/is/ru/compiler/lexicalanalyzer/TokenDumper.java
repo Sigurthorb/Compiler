@@ -14,16 +14,12 @@ public class TokenDumper {
         while (true) {
             Token t = lexer.yylex();
 
-
             System.out.print(t.getTokenCode().toString());
             if(t.getSymbolTableEntry() != null){
                 System.out.print("(" + t.getSymbolTableEntry().toString() + ") ");
+                symbolTable.addEntry(t.getSymbolTableEntry());
             }else{
                 System.out.print(" ");
-            }
-
-            if(t.getSymbolTableEntry() != null){
-                symbolTable.addEntry(t.getSymbolTableEntry());
             }
 
             if (t.getTokenCode().equals(TokenCode.EOF))
