@@ -35,6 +35,7 @@ comma = ","
 assign = "="
 semicol = ";"
 paren = "(" | ")"
+not = "!"
 
 LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n]
@@ -71,6 +72,14 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 		token = new Token(TokenCode.ELSE, OpType.NONE, DataType.NONE, null);
 	else if(op.equals("class"))
         token = new Token(TokenCode.CLASS, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("for"))
+        token = new Token(TokenCode.FOR, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("return"))
+        token = new Token(TokenCode.RETURN, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("break"))
+        token = new Token(TokenCode.BREAK, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("continue"))
+            token = new Token(TokenCode.CONTINUE, OpType.NONE, DataType.NONE, null);
 	else
 		token = new Token(TokenCode.IDENTIFIER, OpType.NONE, DataType.ID, new SymbolTableEntry(yytext()));
 
@@ -123,7 +132,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 	} else if (op.equals("||")) {
 		opType = OpType.OR;
 	}
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.ADDOP, opType, DataType.NONE, null);
 	return token;
 }
 
@@ -137,7 +146,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
             } else if (op.equals("&&")) {
                 opType = OpType.AND;
             }
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);
 	return token;
 }
 
@@ -184,6 +193,11 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 {semicol} {
 	Token token = new Token(TokenCode.SEMICOLON, OpType.NONE, DataType.NONE, null);
 	return token;
+}
+
+{not} {
+    Token token = new Token(TokenCode.NOT,OpType.NONE, DataType.NONE, null);
+    return token
 }
 
 [^] {
