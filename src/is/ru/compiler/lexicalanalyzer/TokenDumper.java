@@ -14,12 +14,29 @@ public class TokenDumper {
 
         while (true) {
             Token t = lexer.yylex();
+
+
             System.out.print(t.getTokenCode().toString());
+            if(t.getSymbolTableEntry() != null){
+                System.out.print("(" + t.getSymbolTableEntry().toString() + ") ");
+            }else{
+                System.out.print(" ");
+            }
             // TODO: Print out relevant  data for token in paranthesis
 
-            //if (/* At the end of file */)
-             //   break;
+            if(t.getSymbolTableEntry() != null){
+                symbolTable.addEntry(t.getSymbolTableEntry());
+            }
+
+            if (t.getTokenCode().equals(TokenCode.EOF))
+                break;
         }
+        int counter = 0;
+        for(SymbolTableEntry temp : symbolTable.getEntryList()){
+            System.out.println(counter + "  " + temp.getLexeme());
+        }
+
+
         // TODO: Print out symbol table
     }
 }

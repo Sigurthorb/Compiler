@@ -15,9 +15,13 @@ public class SymbolTable {
     public SymbolTable(){
         this.entries = new ArrayList<SymbolTableEntry>();
     }
-    
+
     public void addEntry(SymbolTableEntry temp){
-        entries.add(temp);
+        if(temp != null) {
+            if (!entries.contains(temp)) {
+                entries.add(temp);
+            }
+        }
     }
 
     public List<SymbolTableEntry> getEntryList(){
