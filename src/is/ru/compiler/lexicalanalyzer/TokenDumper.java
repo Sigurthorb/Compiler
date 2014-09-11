@@ -9,18 +9,31 @@ import java.io.*;
 public class TokenDumper {
     public static void main(String [] args) throws IOException {
         Lexer lexer = new Lexer(new FileReader(args[0]));
-        String stuff = "++";
-        OpType opType;
-        opType = (stuff == "++" ? OpType.INC : OpType.DEC);
+        SymbolTable symbolTable = new SymbolTable();
 
         while (true) {
             Token t = lexer.yylex();
-            System.out.print(t.getTokenCode().toString());
-            // TODO: Print out relevant  data for token in paranthesis
 
-            //if (/* At the end of file */)
-             //   break;
+
+            System.out.print(t.getTokenCode().toString());
+            if(t.getSymbolTableEntry() != null){
+                System.out.print("(" + t.getSymbolTableEntry().toString() + ") ");
+            }else{
+                System.out.print(" ");
+            }
+
+            if(t.getSymbolTableEntry() != null){
+                symbolTable.addEntry(t.getSymbolTableEntry());
+            }
+
+            if (t.getTokenCode().equals(TokenCode.EOF))
+                break;
         }
-        // TODO: Print out symbol table
+        int counter = 0;
+        for(SymbolTableEntry temp : symbolTable.getEntryList()){
+            System.out.println(counter + "  " + temp.getLexeme());
+            counter++;
+        }
+
     }
 }
