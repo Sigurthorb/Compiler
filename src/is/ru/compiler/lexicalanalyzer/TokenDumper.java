@@ -16,7 +16,7 @@ public class TokenDumper {
 
             System.out.print(t.getTokenCode().toString());
             if(t.getSymbolTableEntry() != null){
-                System.out.print("(" + t.getSymbolTableEntry().toString() + ") ");
+                System.out.print("(" + t.getSymbolTableEntry().getLexeme() + ") ");
                 symbolTable.addEntry(t.getSymbolTableEntry());
             }else{
                 System.out.print(" ");

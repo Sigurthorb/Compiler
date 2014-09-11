@@ -29,15 +29,25 @@ num = {digits} {optional_fraction} {optional_exponent}
 incdecop = "++" | "--"
 relop = "==" | "!=" | "<" | ">" | "<=" | ">="  // more or less
 addop = "+" | "-" | "||"
-mulop = "*" | "/" | "%" | "&&" 
-comment = "/*" (.*) "*/"
+mulop = "*" | "/" | "%" | "&&"
 brace = "{" | "}"
 comma = ","
 assign = "="
 semicol = ";"
 paren = "(" | ")"
-//WS = " " | "\n" | "\t" | "\r"
-WS = " "+ | \R+
+
+LineTerminator = \r|\n|\r\n
+InputCharacter = [^\r\n]
+WS = {LineTerminator} | [ \t\f]
+
+/* comments */
+comment = {TraditionalComment} | {EndOfLineComment} | {DocumentationComment}
+
+TraditionalComment   = "/*" [^*] ~"*/" | "/*" "*"+ "/"
+// Comment can be the last line of the file, without line terminator.
+EndOfLineComment     = "//" {InputCharacter}* {LineTerminator}?
+DocumentationComment = "/**" {CommentContent} "*"+ "/"
+CommentContent       = ( [^*] | \*+ [^/*] )*
 
 %%
 
@@ -176,27 +186,7 @@ WS = " "+ | \R+
 	return token;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[^\ ]+ {
+[^] {
 		Token token = new Token(TokenCode.ERR_ILL_CHAR, OpType.NONE, DataType.NONE, null);
 		return token; }
 

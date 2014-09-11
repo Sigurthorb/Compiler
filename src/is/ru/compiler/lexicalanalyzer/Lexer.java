@@ -32,10 +32,10 @@ class Lexer {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\21\1\17\1\20\1\20\1\17\22\0\1\22\1\10\3\0"+
-    "\1\15\1\16\3\0\1\13\1\5\1\0\1\6\1\3\1\14\12\2"+
-    "\2\0\1\11\1\7\1\11\2\0\4\1\1\4\25\1\6\0\32\1"+
-    "\1\0\1\12\10\0\1\20\u1fa2\0\1\20\1\20\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\1\25\1\24\1\0\1\25\1\23\22\0\1\25\1\10\3\0"+
+    "\1\15\1\16\1\0\1\22\1\22\1\13\1\5\1\20\1\6\1\3"+
+    "\1\14\12\2\1\0\1\21\1\11\1\7\1\11\2\0\4\1\1\4"+
+    "\25\1\6\0\32\1\1\17\1\12\1\17\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff92\0";
 
   /** 
    * Translates characters to character classes
@@ -48,12 +48,13 @@ class Lexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\3\2\4\1\1\1\5\1\1"+
-    "\2\6\1\1\2\7\2\1\1\10\1\5\1\4\1\1"+
-    "\2\3\2\1\1\0\1\11\1\0\1\11";
+    "\1\0\1\1\1\2\1\3\2\4\1\5\1\1\1\6"+
+    "\1\1\2\7\1\1\1\10\1\11\1\12\1\13\2\14"+
+    "\2\0\1\15\1\6\1\4\1\0\1\16\2\3\3\0"+
+    "\2\16\1\0\1\16";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[28];
+    int [] result = new int[35];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -78,13 +79,14 @@ class Lexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\23\0\46\0\71\0\114\0\137\0\162\0\162"+
-    "\0\205\0\23\0\230\0\253\0\276\0\321\0\344\0\367"+
-    "\0\23\0\23\0\23\0\u010a\0\u011d\0\u0130\0\u0130\0\u0143"+
-    "\0\u0156\0\u010a\0\u0169\0\u0156";
+    "\0\0\0\26\0\54\0\102\0\130\0\156\0\204\0\204"+
+    "\0\204\0\232\0\26\0\260\0\306\0\26\0\26\0\26"+
+    "\0\26\0\334\0\26\0\362\0\u0108\0\26\0\26\0\26"+
+    "\0\u011e\0\u0134\0\u014a\0\u0160\0\u0160\0\u0176\0\u018c\0\u01a2"+
+    "\0\26\0\u01b8\0\u0176";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[28];
+    int [] result = new int[35];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -107,23 +109,19 @@ class Lexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\2\1\3\1\5\1\6\2\7"+
-    "\1\10\1\11\1\12\1\13\1\12\1\14\1\15\1\2"+
-    "\1\15\1\16\22\2\1\0\1\2\2\3\1\2\1\3"+
-    "\15\2\1\0\2\2\1\4\1\17\1\20\15\2\1\0"+
-    "\5\2\1\21\14\2\1\0\6\2\1\21\13\2\1\0"+
-    "\7\2\1\22\12\2\1\0\12\2\1\23\7\2\1\0"+
-    "\13\2\1\24\6\2\1\0\16\2\1\12\3\2\1\0"+
-    "\17\2\1\15\1\2\1\15\1\16\17\0\1\16\1\0"+
-    "\2\16\2\2\1\25\17\2\1\0\2\2\1\26\2\2"+
-    "\2\27\13\2\1\0\13\24\1\30\3\24\2\2\1\24"+
-    "\1\31\2\2\1\25\1\2\1\20\15\2\1\0\2\2"+
-    "\1\26\17\2\1\0\13\24\1\30\1\32\2\24\2\2"+
-    "\1\24\14\31\1\33\3\31\2\0\15\31\1\33\1\34"+
-    "\2\31\2\0\2\31";
+    "\1\2\1\3\1\4\1\2\1\3\1\5\1\6\1\7"+
+    "\1\10\1\11\1\12\1\13\1\14\1\13\1\15\1\16"+
+    "\1\17\1\20\1\21\1\22\2\23\27\0\2\3\1\0"+
+    "\1\3\23\0\1\4\1\24\1\25\26\0\1\26\26\0"+
+    "\1\26\26\0\1\27\30\0\1\30\26\0\1\31\1\32"+
+    "\27\0\1\13\33\0\1\23\3\0\1\33\25\0\1\34"+
+    "\2\0\2\35\17\0\13\36\1\37\12\36\23\32\1\40"+
+    "\1\41\1\32\2\0\1\33\1\0\1\25\23\0\1\34"+
+    "\23\0\13\36\1\42\25\36\1\42\1\43\11\36\24\0"+
+    "\1\41\1\0\13\36\1\42\1\41\11\36";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[380];
+    int [] result = new int[462];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -161,10 +159,12 @@ class Lexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\27\1\1\0\1\1\1\0\1\1";
+    "\1\0\1\11\10\1\1\11\2\1\4\11\1\1\1\11"+
+    "\2\0\3\11\1\0\3\1\3\0\1\1\1\11\1\0"+
+    "\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[28];
+    int [] result = new int[35];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -260,7 +260,7 @@ class Lexer {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 108) {
+    while (i < 106) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -618,94 +618,149 @@ class Lexer {
 
       switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
         case 1: 
-          { System.out.println("Unknown sequence: ’" + yytext() + "’"); 
-		Token token = new Token(TokenCode.ERR_ILL_CHAR, OpType.NONE, DataType.NONE, null);
-		return token;
-          }
-        case 10: break;
-        case 2: 
-          { System.out.println("id: '" + yytext() + "'"); 
-		Token token = new Token(TokenCode.IDENTIFIER,  OpType.NONE, DataType.NONE, new SymbolTableEntry(yytext()));
-		return token;
-          }
-        case 11: break;
-        case 3: 
-          { System.out.println("num: ’" + yytext() + "’"); 
-		Token token = new Token(TokenCode.NUMBER, OpType.NONE, DataType.NONE, new SymbolTableEntry(yytext()));
-		return token;
-          }
-        case 12: break;
-        case 4: 
-          { System.out.println("addop: ’" + yytext() + "’"); 
-		String op = yytext();
-		OpType opType = OpType.NONE;
-		if (op.equals("+")) {
-			opType = OpType.PLUS;
-		} else if (op.equals("-")) {
-			opType = OpType.MINUS;
-		} else if (op.equals("||")) {
-			opType = OpType.OR;
-		}
-		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
-		return token;
-          }
-        case 13: break;
-        case 5: 
-          { System.out.println("relop: ’" + yytext() + "’"); 
-		String op = yytext();
-		OpType opType = OpType.NONE;
-                if (op.equals("==")) {
-                    opType = OpType.EQUAL;
-
-                } else if (op.equals("!=")) {
-                    opType = OpType.NOT_EQUAL;
-
-                } else if (op.equals("<")) {
-                    opType = OpType.LT;
-
-                } else if (op.equals(">")) {
-                    opType = OpType.GT;
-
-                } else if (op.equals(">=")) {
-                    opType = OpType.GTE;
-
-                } else if (op.equals("<=")) {
-                    opType = OpType.LTE;
-                }
-		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
-		return token;
-          }
-        case 14: break;
-        case 6: 
-          { System.out.println("mulop: ’" + yytext() + "’"); 
-		String op = yytext();
-		OpType opType = OpType.NONE;
-                if (op.equals("*")) {
-                    opType = OpType.MULT;
-                } else if (op.equals("/")) {
-                    opType = OpType.DIV;
-                } else if (op.equals("&&")) {
-                    opType = OpType.AND;
-                }
-		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+          { Token token = new Token(TokenCode.ERR_ILL_CHAR, OpType.NONE, DataType.NONE, null);
 		return token;
           }
         case 15: break;
-        case 7: 
-          { /* Ignore whitespace */
+        case 2: 
+          { Token token = null;
+	String op = yytext();
+
+	if(op.equals("int"))
+		token = new Token(TokenCode.INT, OpType.NONE, DataType.INT, null);
+	else if(op.equals("real"))
+		token = new Token(TokenCode.REAL, OpType.NONE, DataType.REAL, null);
+	else if(op.equals("void"))
+		token = new Token(TokenCode.VOID, OpType.NONE, DataType.NONE, null);
+	else if(op.equals("if"))
+		token = new Token(TokenCode.IF, OpType.NONE, DataType.NONE, null);
+	else if(op.equals("else"))
+		token = new Token(TokenCode.ELSE, OpType.NONE, DataType.NONE, null);
+	else if(op.equals("class"))
+        token = new Token(TokenCode.CLASS, OpType.NONE, DataType.NONE, null);
+	else
+		token = new Token(TokenCode.IDENTIFIER, OpType.NONE, DataType.ID, new SymbolTableEntry(yytext()));
+
+	return token;
           }
         case 16: break;
-        case 8: 
-          { System.out.println("incdecop: ’" + yytext() + "’"); 
-		OpType op = (yytext() == "++" ? OpType.INC : OpType.DEC);
-		Token token = new Token(TokenCode.INCDECOP, op, DataType.NONE, null);
-		return token;
+        case 3: 
+          { Token token = new Token(TokenCode.NUMBER, OpType.NONE, DataType.NONE, new SymbolTableEntry(yytext()));
+	return token;
           }
         case 17: break;
-        case 9: 
-          { /* Ignore multiline comments */
+        case 4: 
+          { String op = yytext();
+	OpType opType = OpType.NONE;
+	if (op.equals("+")) {
+		opType = OpType.PLUS;
+	} else if (op.equals("-")) {
+		opType = OpType.MINUS;
+	} else if (op.equals("||")) {
+		opType = OpType.OR;
+	}
+	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	return token;
           }
         case 18: break;
+        case 5: 
+          { Token token = new Token(TokenCode.ASSIGNOP, OpType.ASSIGN, DataType.NONE, null);
+    return token;
+          }
+        case 19: break;
+        case 6: 
+          { String op = yytext();
+	OpType opType = OpType.NONE;
+        if (op.equals("==")) {
+            opType = OpType.EQUAL;
+
+        } else if (op.equals("!=")) {
+            opType = OpType.NOT_EQUAL;
+
+        } else if (op.equals("<")) {
+            opType = OpType.LT;
+
+        } else if (op.equals(">")) {
+            opType = OpType.GT;
+
+        } else if (op.equals(">=")) {
+            opType = OpType.GTE;
+
+        } else if (op.equals("<=")) {
+            opType = OpType.LTE;
+        }
+	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	return token;
+          }
+        case 20: break;
+        case 7: 
+          { String op = yytext();
+	OpType opType = OpType.NONE;
+            if (op.equals("*")) {
+                opType = OpType.MULT;
+            } else if (op.equals("/")) {
+                opType = OpType.DIV;
+            } else if (op.equals("&&")) {
+                opType = OpType.AND;
+            }
+	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	return token;
+          }
+        case 21: break;
+        case 8: 
+          { String op = yytext();
+    TokenCode tokenCode = null;
+
+    if(op.equals("{")){
+        tokenCode = TokenCode.LBRACE;
+    }else if(op.equals("}")){
+        tokenCode = TokenCode.RBRACE;
+    }
+
+    Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
+
+    return token;
+          }
+        case 22: break;
+        case 9: 
+          { Token token = new Token(TokenCode.COMMA, OpType.NONE, DataType.NONE, null);
+    return token;
+          }
+        case 23: break;
+        case 10: 
+          { Token token = new Token(TokenCode.SEMICOLON, OpType.NONE, DataType.NONE, null);
+	return token;
+          }
+        case 24: break;
+        case 11: 
+          { String op = yytext();
+    TokenCode tokenCode = null;
+
+    if(op.equals("(")){
+        tokenCode = TokenCode.LPAREN;
+    }else if(op.equals(")")){
+        tokenCode = TokenCode.RPAREN;
+    }
+
+    Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
+
+    return token;
+          }
+        case 25: break;
+        case 12: 
+          { /* Ignore whitespace */
+          }
+        case 26: break;
+        case 13: 
+          { OpType op = (yytext() == "++" ? OpType.INC : OpType.DEC);
+	Token token = new Token(TokenCode.INCDECOP, op, DataType.NONE, null);
+	return token;
+          }
+        case 27: break;
+        case 14: 
+          { System.out.println("Comment!"); /* Ignore multiline comments */
+          }
+        case 28: break;
         default: 
           if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
             zzAtEOF = true;
