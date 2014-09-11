@@ -148,7 +148,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
                 opType = OpType.DIV;
             } else if (op.equals("&&")) {
                 opType = OpType.AND;
-            } else if (op.equals("%" {
+            } else if (op.equals("%")) {
                 opType = OpType.MOD;
             }
 	Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);

@@ -21,6 +21,12 @@ class Program {
 		    i++;
 		    j--;
 		}
+
+		for(int k = 0; k < i; k++) {
+		    //do stuff
+		    i = i+2;
+		}
+
 		else if(i <= j || j >= i) {
 		    j = i*j/2;
 		}
