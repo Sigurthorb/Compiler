@@ -197,7 +197,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 
 {not} {
     Token token = new Token(TokenCode.NOT,OpType.NONE, DataType.NONE, null);
-    return token
+    return token;
 }
 
 [^] {
