@@ -24,7 +24,7 @@ digit = [0-9]
 
 id = {letter} ({letter} |{digit})*
 digits = {digit}+
-longerror = ([a-z]|[A|Z]32,)
+longerror = (\w\b 32,)
 optional_fraction = ("." {digits})?
 optional_exponent = ("E"("+"|"-")? {digits})?
 num = {digits} {optional_fraction} {optional_exponent}
