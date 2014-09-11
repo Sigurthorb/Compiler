@@ -17,6 +17,7 @@ public class Token {
         this.opType = opType;
         this.dataType = dataType;
         this.symbolTableEntry = symbolTableEntry;
+
     }
 
     public TokenCode getTokenCode() {
