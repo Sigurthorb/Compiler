@@ -1,4 +1,7 @@
 Compiler
 ========
 
-Projects in Compilers
+#Projects in Compilers
+
+##Part 1: Lexer
+
