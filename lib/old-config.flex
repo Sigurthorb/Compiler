@@ -31,6 +31,7 @@ relop = "==" | "!=" | "<" | ">" | "<=" | ">="  // more or less
 addop = "+" | "-" | "||"
 mulop = "*" | "/" | "%" | "&&"
 brace = "{" | "}"
+bracket = "[" | "]"
 comma = ","
 assign = "="
 semicol = ";"
@@ -123,7 +124,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 	} else if (op.equals("||")) {
 		opType = OpType.OR;
 	}
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.ADDOP, opType, DataType.NONE, null);
 	return token;
 }
 
@@ -137,7 +138,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
             } else if (op.equals("&&")) {
                 opType = OpType.AND;
             }
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);
 	return token;
 }
 
@@ -149,6 +150,21 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
         tokenCode = TokenCode.LBRACE;
     }else if(op.equals("}")){
         tokenCode = TokenCode.RBRACE;
+    }
+
+    Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
+
+    return token;
+}
+
+{bracket} {
+    String op = yytext();
+    TokenCode tokenCode = null;
+
+    if(op.equals("[")){
+        tokenCode = TokenCode.LBRACKET;
+    }else if(op.equals("]")){
+        tokenCode = TokenCode.RBRACKET;
     }
 
     Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
