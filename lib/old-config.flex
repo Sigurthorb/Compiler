@@ -53,7 +53,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 
 {WS} { /* Ignore whitespace */ }
 
-{comment} { System.out.println("Comment!"); /* Ignore multiline comments */ }
+{comment} { /* Ignore multiline comments */ }
 
 {id} {
 	Token token = null;
@@ -123,7 +123,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 	} else if (op.equals("||")) {
 		opType = OpType.OR;
 	}
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.ADDOP, opType, DataType.NONE, null);
 	return token;
 }
 
@@ -137,7 +137,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
             } else if (op.equals("&&")) {
                 opType = OpType.AND;
             }
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);
 	return token;
 }
 

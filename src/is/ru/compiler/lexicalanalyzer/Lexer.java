@@ -469,7 +469,7 @@ class Lexer {
   private void zzDoEOF() {
     if (!zzEOFDone) {
       zzEOFDone = true;
-    	System.out.println();
+    	
 
     }
   }
@@ -659,7 +659,7 @@ class Lexer {
 	} else if (op.equals("||")) {
 		opType = OpType.OR;
 	}
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.ADDOP, opType, DataType.NONE, null);
 	return token;
           }
         case 18: break;
@@ -703,7 +703,7 @@ class Lexer {
             } else if (op.equals("&&")) {
                 opType = OpType.AND;
             }
-	Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+	Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);
 	return token;
           }
         case 21: break;
@@ -758,7 +758,7 @@ class Lexer {
           }
         case 27: break;
         case 14: 
-          { System.out.println("Comment!"); /* Ignore multiline comments */
+          { /* Ignore multiline comments */
           }
         case 28: break;
         default: 

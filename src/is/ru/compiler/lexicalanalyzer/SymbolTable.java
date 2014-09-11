@@ -1,6 +1,7 @@
 package is.ru.compiler.lexicalanalyzer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -18,7 +19,15 @@ public class SymbolTable {
 
     public void addEntry(SymbolTableEntry temp){
         if(temp != null) {
-            if (!entries.contains(temp)) {
+            boolean hasEntry = false;
+            for(Iterator<SymbolTableEntry> i = entries.iterator(); i.hasNext();){
+                SymbolTableEntry sTable = i.next();
+                if(temp.getLexeme().toString().equals(sTable.getLexeme().toString())) {
+                    hasEntry = true;
+                    break;
+                }
+            }
+            if (!hasEntry) {
                 entries.add(temp);
             }
         }
