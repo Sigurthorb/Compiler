@@ -24,7 +24,7 @@ digit = [0-9]
 
 id = {letter} ({letter} |{digit})*
 digits = {digit}+
-longerror = \b\w{32,}
+longerror = ([a-z]|[A|Z]32,)
 optional_fraction = ("." {digits})?
 optional_exponent = ("E"("+"|"-")? {digits})?
 num = {digits} {optional_fraction} {optional_exponent}
@@ -148,7 +148,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
                 opType = OpType.DIV;
             } else if (op.equals("&&")) {
                 opType = OpType.AND;
-            } else if (op.equals("% {
+            } else if (op.equals("%" {
                 opType = OpType.MOD;
             }
 	Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);
@@ -213,7 +213,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 {semicol} {
 	Token token = new Token(TokenCode.SEMICOLON, OpType.NONE, DataType.NONE, null);
 	return token;
-}https://www.youtube.com/watch?v=iqkzR0sdtuU
+}
 
 {not} {
     Token token = new Token(TokenCode.NOT,OpType.NONE, DataType.NONE, null);
@@ -222,6 +222,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 
 {longerror} {
 	Token token = new Token(TokenCode.ERR_LONG_ID, OpType.NONE, DataType.NONE, null);
+	return token;
 }
 
 [^] {
