@@ -21,8 +21,10 @@ package is.ru.compiler.lexicalanalyzer;
 
 letter = [a-z] | [A-Z]
 digit = [0-9]
+
 id = {letter} ({letter} |{digit})*
 digits = {digit}+
+longerror = \b\w{32,}
 optional_fraction = ("." {digits})?
 optional_exponent = ("E"("+"|"-")? {digits})?
 num = {digits} {optional_fraction} {optional_exponent}
@@ -31,10 +33,12 @@ relop = "==" | "!=" | "<" | ">" | "<=" | ">="  // more or less
 addop = "+" | "-" | "||"
 mulop = "*" | "/" | "%" | "&&"
 brace = "{" | "}"
+bracket = "[" | "]"
 comma = ","
 assign = "="
 semicol = ";"
 paren = "(" | ")"
+not = "!"
 
 LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n]
@@ -71,6 +75,14 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 		token = new Token(TokenCode.ELSE, OpType.NONE, DataType.NONE, null);
 	else if(op.equals("class"))
         token = new Token(TokenCode.CLASS, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("for"))
+        token = new Token(TokenCode.FOR, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("return"))
+        token = new Token(TokenCode.RETURN, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("break"))
+        token = new Token(TokenCode.BREAK, OpType.NONE, DataType.NONE, null);
+    else if(op.equals("continue"))
+            token = new Token(TokenCode.CONTINUE, OpType.NONE, DataType.NONE, null);
 	else
 		token = new Token(TokenCode.IDENTIFIER, OpType.NONE, DataType.ID, new SymbolTableEntry(yytext()));
 
@@ -136,6 +148,8 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
                 opType = OpType.DIV;
             } else if (op.equals("&&")) {
                 opType = OpType.AND;
+            } else if (op.equals("% {
+                opType = OpType.MOD;
             }
 	Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);
 	return token;
@@ -149,6 +163,21 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
         tokenCode = TokenCode.LBRACE;
     }else if(op.equals("}")){
         tokenCode = TokenCode.RBRACE;
+    }
+
+    Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
+
+    return token;
+}
+
+{bracket} {
+    String op = yytext();
+    TokenCode tokenCode = null;
+
+    if(op.equals("[")){
+        tokenCode = TokenCode.LBRACKET;
+    }else if(op.equals("]")){
+        tokenCode = TokenCode.RBRACKET;
     }
 
     Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
@@ -184,6 +213,15 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 {semicol} {
 	Token token = new Token(TokenCode.SEMICOLON, OpType.NONE, DataType.NONE, null);
 	return token;
+}https://www.youtube.com/watch?v=iqkzR0sdtuU
+
+{not} {
+    Token token = new Token(TokenCode.NOT,OpType.NONE, DataType.NONE, null);
+    return token;
+}
+
+{longerror} {
+	Token token = new Token(TokenCode.ERR_LONG_ID, OpType.NONE, DataType.NONE, null);
 }
 
 [^] {
