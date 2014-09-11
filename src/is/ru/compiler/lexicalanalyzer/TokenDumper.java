@@ -9,9 +9,6 @@ import java.io.*;
 public class TokenDumper {
     public static void main(String [] args) throws IOException {
         Lexer lexer = new Lexer(new FileReader(args[0]));
-        String stuff = "++";
-        OpType opType;
-        opType = (stuff == "++" ? OpType.INC : OpType.DEC);
 
         while (true) {
             Token t = lexer.yylex();
