@@ -1,4 +1,4 @@
-package is.ru.compiler.lexicalanalyzer.enums;
+package is.ru.compiler.lexicalanalyzer;
 
 /**
  * Created by jakob on 2.9.2014.
@@ -10,5 +10,4 @@ public enum TokenCode {
     LBRACE, RBRACE, LBRACKET, RBRACKET, LPAREN, RPAREN,
     SEMICOLON, COMMA, NOT, INT, REAL,
     EOF, ERR_ILL_CHAR, ERR_LONG_ID
-
 }

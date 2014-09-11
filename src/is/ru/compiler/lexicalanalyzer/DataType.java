@@ -1,4 +1,4 @@
-package is.ru.compiler.lexicalanalyzer.enums;
+package is.ru.compiler.lexicalanalyzer;
 
 /**
  * Created by jakob on 2.9.2014.

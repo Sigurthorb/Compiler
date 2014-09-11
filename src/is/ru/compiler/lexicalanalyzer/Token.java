@@ -1,21 +1,22 @@
 package is.ru.compiler.lexicalanalyzer;
 
-import is.ru.compiler.lexicalanalyzer.enums.*;
-
 /**
  * Created by jakob on 2.9.2014.
  */
 public class Token {
-    public TokenCode tokenCode;
-    public OpType opType;
-    public DataType dataType;
-    public SymbolTableEntry symbolTableEntry;
+    private TokenCode tokenCode;
+    private OpType opType;
+    private DataType dataType;
+    private SymbolTableEntry symbolTableEntry;
 
     public Token() {
     }
 
-    public Token(TokenCode tokenCode) {
+    public Token(TokenCode tokenCode, OpType opType, DataType dataType, SymbolTableEntry symbolTableEntry) {
         this.tokenCode = tokenCode;
+        this.opType = opType;
+        this.dataType = dataType;
+        this.symbolTableEntry = symbolTableEntry;
     }
 
     public TokenCode getTokenCode() {

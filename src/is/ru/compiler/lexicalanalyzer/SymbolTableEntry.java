@@ -7,13 +7,12 @@ import com.sun.org.apache.xerces.internal.util.SymbolTable;
  */
 public class SymbolTableEntry {
 
-    public SymbolTable mySymbolTable;
+    String lexeme;
 
     public SymbolTableEntry() {
-        mySymbolTable = new SymbolTable();
     }
 
-    public SymbolTableEntry(SymbolTable mySymbolTable) {
-        this.mySymbolTable = mySymbolTable;
+    public SymbolTableEntry(String lexeme) {
+        this.lexeme = lexeme;
     }
 }
