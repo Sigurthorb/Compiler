@@ -26,6 +26,7 @@ public class TokenDumper {
                 break;
         }
         int counter = 0;
+        System.out.println();
         for(SymbolTableEntry temp : symbolTable.getEntryList()){
             System.out.println(counter + "  " + temp.getLexeme());
             counter++;
