@@ -40,6 +40,7 @@ semicol = ";"
 void = "void"
 if = "if"
 else = "else"
+not = "!"
 
 WS = [ \n\t\r]+
 
@@ -58,31 +59,32 @@ WS = [ \n\t\r]+
 		return token; }
 
 {incdecop} {
-		OpType op = (yytext() == "++" ? OpType.INC : OpType.DEC);
+		OpType op = (yytext().equals("++") ? OpType.INC : OpType.DEC);
 		Token token = new Token(TokenCode.INCDECOP, op, DataType.NONE, null);
 		return token; }
 
 {relop} {
 		String op = yytext();
 		OpType opType = OpType.NONE;
-                if (op.equals("==")) {
-                    opType = OpType.EQUAL;
+        if (op.equals("==")) {
+            opType = OpType.EQUAL;
 
-                } else if (op.equals("!=")) {
-                    opType = OpType.NOT_EQUAL;
+        } else if (op.equals("!=")) {
+            opType = OpType.NOT_EQUAL;
 
-                } else if (op.equals("<")) {
-                    opType = OpType.LT;
+        } else if (op.equals("<")) {
+            opType = OpType.LT;
 
-                } else if (op.equals(">")) {
-                    opType = OpType.GT;
+        } else if (op.equals(">")) {
+            opType = OpType.GT;
 
-                } else if (op.equals(">=")) {
-                    opType = OpType.GTE;
+        } else if (op.equals(">=")) {
+            opType = OpType.GTE;
 
-                } else if (op.equals("<=")) {
-                    opType = OpType.LTE;
-                }
+        } else if (op.equals("<=")) {
+            opType = OpType.LTE;
+        }
+
 		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
 		return token; }
 
@@ -96,7 +98,7 @@ WS = [ \n\t\r]+
 		} else if (op.equals("||")) {
 			opType = OpType.OR;
 		}
-		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+		Token token = new Token(TokenCode.ADDOP, opType, DataType.NONE, null);
 		return token; }
 
 {mulop} {
@@ -109,14 +111,12 @@ WS = [ \n\t\r]+
                 } else if (op.equals("&&")) {
                     opType = OpType.AND;
                 }
-		Token token = new Token(TokenCode.RELOP, opType, DataType.NONE, null);
+		Token token = new Token(TokenCode.MULOP, opType, DataType.NONE, null);
 		return token; }
 
 {brace} {
-
             String op = yytext();
             TokenCode tokenCode = TokenCode.NONE;
-
 
             if(op.equals("{")){
                 tokenCode = TokenCode.LBRACE;
@@ -124,28 +124,28 @@ WS = [ \n\t\r]+
                 tokenCode = TokenCode.RBRACE;
             }
 
-            Token token = new Token(tokenCode);
+            Token token = new Token(tokenCode, OpType.NONE, DataType.NONE, null);
 
             return token;
         }
 
 {comma} {
-
+            Token token = new Token(TokenCode.COMMA, OpType.NONE, DataType.NONE, null);
             return token;
         }
 
 {int} {
-
+            Token token = new Token(TokenCode.INT, OpType.NONE, DataType.INT, null);
             return token;
       }
 
 {real} {
-
+            Token token = new Token(TokenCode.REAL, OpType.NONE, DataType.REAL, null);
             return token;
        }
 
 {assign} {
-
+            Token token = new Token(TokenCode.ASSIGNOP, OpType.ASSIGN, DataType.NONE, null);
             return token;
          }
 
