@@ -24,7 +24,6 @@ digit = [0-9]
 
 id = {letter} ({letter} |{digit})*
 digits = {digit}+
-longerror = (\w\b 32,)
 optional_fraction = ("." {digits})?
 optional_exponent = ("E"("+"|"-")? {digits})?
 num = {digits} {optional_fraction} {optional_exponent}
@@ -64,6 +63,7 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 	String op = yytext();
 	if (op.length() > 32) {
 		token = new Token(TokenCode.ERR_LONG_ID, OpType.NONE, DataType.NONE, null);
+		return token;
 	}
 
 	if(op.equals("int"))
@@ -221,11 +221,6 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 {not} {
     Token token = new Token(TokenCode.NOT,OpType.NONE, DataType.NONE, null);
     return token;
-}
-
-{longerror} {
-	Token token = new Token(TokenCode.ERR_LONG_ID, OpType.NONE, DataType.NONE, null);
-	return token;
 }
 
 [^] {
