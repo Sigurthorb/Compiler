@@ -62,6 +62,9 @@ CommentContent       = ( [^*] | \*+ [^/*] )*
 {id} {
 	Token token = null;
 	String op = yytext();
+	if (op.length() > 32) {
+		token = new Token(TokenCode.ERR_LONG_ID, OpType.NONE, DataType.NONE, null);
+	}
 
 	if(op.equals("int"))
 		token = new Token(TokenCode.INT, OpType.NONE, DataType.INT, null);
