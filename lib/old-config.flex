@@ -40,6 +40,7 @@ semicol = ";"
 void = "void"
 if = "if"
 else = "else"
+paren = "(" | ")"
 
 WS = [ \n\t\r]+
 
@@ -117,11 +118,26 @@ WS = [ \n\t\r]+
             String op = yytext();
             TokenCode tokenCode = TokenCode.NONE;
 
-
             if(op.equals("{")){
                 tokenCode = TokenCode.LBRACE;
             }else if(op.equals("}")){
                 tokenCode = TokenCode.RBRACE;
+            }
+
+            Token token = new Token(tokenCode);
+
+            return token;
+        }
+
+{paren} {
+
+            String op = yytext();
+            TokenCode tokenCode = TokenCode.NONE;
+
+            if(op.equals("(")){
+                tokenCode = TokenCode.LPAREN;
+            }else if(op.equals(")")){
+                tokenCode = TokenCode.RPAREN;
             }
 
             Token token = new Token(tokenCode);
@@ -150,24 +166,25 @@ WS = [ \n\t\r]+
          }
 
 {semicol} {
-
-            return token;
+		Token token = new Token(TokenCode.SEMICOLON, OpType.NONE, DataType.NONE, null);
+		return token; }
           }
 
 {void} {
-
-            return token;
+		Token token = new Token(TokenCode.VOID, OpType.NONE, DataType.NONE, null);
+		return token; }
         }
 
 {if} {
 
-            return token;
+		Token token = new Token(TokenCode.IF, OpType.NONE, DataType.NONE, null);
+		return token; }
      }
 
 {else} {
-
-            return token;
-        }
+        Token token = new Token(TokenCode.ELSE, OpType.NONE, DataType.NONE, null);
+        return token; }
+}
 
 
 
