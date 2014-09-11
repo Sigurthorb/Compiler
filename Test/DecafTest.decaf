@@ -2,7 +2,9 @@ class Program {
 	/* This is a simple test program */
 	int i, j;
 	real number;
-
+    /* multi line
+        comment
+    for test */
 	void main() {
 		i = 0;
 		j = 1;
@@ -13,5 +15,14 @@ class Program {
 			number = 12.34E7;
 		}
 		i = i + j;
+		j = i % 43;
+		if(i > 4 && j < 3 || i+j != 3) }
+		    // do stuff
+		    i++;
+		    j--;
+		}
+		else if(i <= j || j >= i) {
+		    j = i*j/2;
+		}
 	}
 }
